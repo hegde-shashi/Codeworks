@@ -46,6 +46,7 @@ function Contact(props) {
         setIsPlaceholder(false)
         setIsOpen(false)
         setFormData({ ...formData, dmn: domain })
+        setError({...error, dmn: false})
     }
 
     const handleClickOutside = (event) => {
@@ -174,38 +175,41 @@ function Contact(props) {
             }
         });
 
+        props.data(formData)
+
         setError(newErrorArray);
 
         const noErrors = Object.values(newErrorArray).every((value) => value === false);
 
         if (noErrors) {
-            emailjs.send(
-            'service_iul2d9g',
-            'template_la6ubg5',
-            formData,
-            'iTz5sIdnD7Aw7hTst'
-            )
-            .then((result) => {
-                alert('Email sent successfully!');
-                console.log(result.text);
-            }, (error) => {
-                alert('Failed to send email, please try again.');
-                console.log(error.text);
-            });
+            // emailjs.send(
+            // 'service_iul2d9g',
+            // 'template_la6ubg5',
+            // formData,
+            // 'iTz5sIdnD7Aw7hTst'
+            // )
+            // .then((result) => {
+            //     alert('Email sent successfully!');
+            //     console.log(result.text);
+            // }, (error) => {
+            //     alert('Failed to send email, please try again.');
+            //     console.log(error.text);
+            // });
 
-            emailjs.send(
-            'service_iul2d9g',
-            'template_n1b7m8w',
-            formData,
-            'iTz5sIdnD7Aw7hTst'
-            )
-            .then((result) => {
-                alert('Email sent successfully!');
-                console.log(result.text);
-            }, (error) => {
-                alert('Failed to send email, please try again.');
-                console.log(error.text);
-            });
+            // emailjs.send(
+            // 'service_iul2d9g',
+            // 'template_n1b7m8w',
+            // formData,
+            // 'iTz5sIdnD7Aw7hTst'
+            // )
+            // .then((result) => {
+            //     alert('Email sent successfully!');
+            //     console.log(result.text);
+            // }, (error) => {
+            //     alert('Failed to send email, please try again.');
+            //     console.log(error.text);
+            // });
+            props.sub(true)
             console.log("send mail");
         } else {
             setGotError(true);
@@ -215,6 +219,12 @@ function Contact(props) {
         console.log(newErrorArray); 
         console.log(formData); 
     };
+
+    // useEffect ( () => {
+    //     if (!gotError) {
+    //         document.body.style.overflow = 'hidden'
+    //     }
+    // })
 
 
     return (

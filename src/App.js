@@ -5,6 +5,9 @@ import Home from './Codeworks/Home';
 import About from './Codeworks/About';
 import Service from './Codeworks/Service';
 import Contact from './Codeworks/Contact';
+import BgImg from './Codeworks/BgImg';
+import Confirm from './Codeworks/Confirm';
+
 
 function App() {
 
@@ -14,6 +17,16 @@ function App() {
   const cntRef = useRef(null);
 
   const [actSec, setActSec] = useState("home");
+  const[submit, setSubmit] = useState()
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    college: '',
+    dmn: '',
+    subject: '',
+    details: ''
+  });
 
   const activeMenu = () => {
     const sections = [
@@ -36,21 +49,32 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("scroll", activeMenu);
+    window.addEventListener("unload", activeMenu);
+    if (submit) {
+      document.body.style.overflow = 'hidden'
+    }
     return () => {
       window.removeEventListener("scroll", activeMenu);
+      window.removeEventListener("unload", activeMenu);
+      if (!submit) {
+        document.body.style.overflow = 'visible'
+      }
     };
-  }, []);
+  }, [submit]);
+
+
 
 
   return (
     <div>
       <Bar hm={homeRef} abt={abtRef} ser={serRef} cnt={cntRef} act={actSec}></Bar>
-      <div className="homepage">
-        <Home home={homeRef} about={abtRef}></Home>
-        <About about={abtRef} service={serRef}></About>
-      </div>
+      <BgImg></BgImg>
+      <Home home={homeRef} about={abtRef}></Home>
+      <About about={abtRef} service={serRef}></About>
       <Service service={serRef}></Service>
-      <Contact contact={cntRef}></Contact>
+      <Contact contact={cntRef} data={setFormData} sub={setSubmit}></Contact>
+      {submit && <Confirm data={formData} sub={submit} edit={setSubmit}></Confirm>}
+      {/* <Confirm data={formData} sub={submit}></Confirm> */}
     </div>
   );
 }

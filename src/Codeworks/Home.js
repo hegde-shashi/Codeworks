@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
 function Home(props) {
+
+  const [light, setLight] = useState('')
 
   const about = () => {
     if (props.about.current) {
@@ -10,8 +12,12 @@ function Home(props) {
     }
   };
 
+  setTimeout(() => {
+    setLight('display-block')
+}, 1999);
+
   return (
-    <div className="tagline" ref={props.home}>
+    <div id={light} className="tagline" ref={props.home}>
       <div className="tag">
         <div className="pad">
           &lt;YOUR <span className="idea">IDEA</span>&gt;
