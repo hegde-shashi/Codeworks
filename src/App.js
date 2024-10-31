@@ -18,6 +18,9 @@ function App() {
 
   const [actSec, setActSec] = useState("home");
   const[submit, setSubmit] = useState()
+  const[clear, setClear] = useState(false)
+  const [option, setOption] = useState("Select domain*");
+  const [isPlaceholder, setIsPlaceholder] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,8 +75,8 @@ function App() {
       <Home home={homeRef} about={abtRef}></Home>
       <About about={abtRef} service={serRef}></About>
       <Service service={serRef}></Service>
-      <Contact contact={cntRef} data={setFormData} sub={setSubmit}></Contact>
-      {submit && <Confirm data={formData} sub={submit} edit={setSubmit}></Confirm>}
+      <Contact contact={cntRef} formData={formData} setFormData={setFormData} sub={setSubmit} clr={clear} opt={option} setOpt={setOption} plc={isPlaceholder} setPlc={setIsPlaceholder}></Contact>
+      {submit && <Confirm data={formData} setData={setFormData} sub={submit} edit={setSubmit} clr={setClear} setOpt={setOption} setPlc={setIsPlaceholder} hm={homeRef}></Confirm>}
       {/* <Confirm data={formData} sub={submit}></Confirm> */}
     </div>
   );

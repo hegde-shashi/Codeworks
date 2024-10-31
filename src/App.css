@@ -10,6 +10,8 @@
   --link1000: 0.8rem;
   --num1000: 7.5rem;
   --placeholder: 0.75rem;
+  --send: 0.9rem;
+  --count: 0.75rem;
   --font: "Roboto Slab", serif;
   /* --font: "Roboto Mono", monospace; */
 }
@@ -452,6 +454,7 @@ body {
   line-height: 0;
   position: absolute;
   height: 60%;
+  font-family: "Kode Mono";
 }
 
 
@@ -517,6 +520,10 @@ body {
   border: 2px transparent solid;
 }
 
+input:-internal-autofill-selected {
+  background-color: rgba(217, 217, 217, 0.4) !important;
+}
+
 
 .form-input::placeholder, .drpdwn-PH {
   color: rgba(255, 255, 255, 0.3);
@@ -530,7 +537,7 @@ body {
   outline: none;
 }
 
-.lable-border {
+#lable-border {
   border: #ffffff 2px solid;
   outline: none;
 }
@@ -639,7 +646,8 @@ input[type=number] {
 .goterror {
   text-align: center;
   font-size: 0.7rem;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
+  color: rgb(107, 204, 105);
 }
 
 .button {
@@ -716,7 +724,7 @@ input[type=number] {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.confirm-box {
+/* .confirm-box {
   background: rgba(65, 65, 65, 0.9) !important;
   font-size: var(--abt1000);
   backdrop-filter: blur(8px);
@@ -727,6 +735,70 @@ input[type=number] {
   display: flex;
   top: 30vh;
   left: 30vw;
+  flex-direction: column;
+  justify-content: center;
+} */
+
+.confirm-l {
+  background: rgba(65, 65, 65, 0.9) !important;
+  border: #717171 1px solid;
+  font-size: var(--send);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  position: fixed;
+  height: 40vh;
+  width: 40vw;
+  display: flex;
+  top: 30vh;
+  left: 30vw;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.confirm-p {
+  background: rgba(65, 65, 65, 0.9) !important;
+  border: #717171 1px solid;
+  font-size: var(--send);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  position: fixed;
+  height: 30vh;
+  width: 80vw;
+  display: flex;
+  top: 35vh;
+  left: 10vw;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.thnks-l {
+  background: rgba(65, 65, 65, 0.9) !important;
+  border: #717171 1px solid;
+  font-size: var(--send);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  position: fixed;
+  height: 25vh;
+  width: 40vw;
+  display: flex;
+  top: 37.5vh;
+  left: 30vw;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.thnks-p {
+  background: rgba(65, 65, 65, 0.9) !important;
+  border: #717171 1px solid;
+  font-size: var(--send);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  position: fixed;
+  height: 20vh;
+  width: 70vw;
+  display: flex;
+  top: 30vh;
+  left: 15vw;
   flex-direction: column;
   justify-content: center;
 }
@@ -748,6 +820,7 @@ input[type=number] {
 .edit {
   background-color: #6f6f6f;
   margin: 20px 0 0 20px;
+  width: 30%;
 }
 
 .edit:hover {
@@ -756,14 +829,42 @@ input[type=number] {
 
 .send {
   margin: 20px 20px 0 0;
+  width: 30%;
 }
 
+.thnks {
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.back-link {
+  text-align: center;
+  color: #ababab;
+}
+
+.count {
+  font-size: var(--count);
+}
+
+/* .thnks-box {
+  height: 25vh;
+} */
+
+.one, .two, .three {
+  visibility: hidden;
+}
 
 /*Media*/
 
-@media (max-width: 359.98px) {
+@media (max-width: 377.98px) {
   :root {
     --head1000: 1.2rem;
+    --count: 0.3rem;
+    --send: 0.1.5rem;
   }
 
   body {
@@ -856,9 +957,11 @@ input[type=number] {
   }
 }
 
-@media (min-width: 360px) and (max-width: 519.98px) {
+@media (min-width: 378px) and (max-width: 549.98px) {
   :root {
     --head1000: 1.5rem;
+    --count: 0.4rem;
+    --send: 0.5rem;
   }
 
   body {
@@ -952,7 +1055,12 @@ input[type=number] {
 }
 
 
-@media (min-width: 520px) and (max-width: 767.98px) {
+@media (min-width: 550px) and (max-width: 767.98px) {
+  :root {
+    --count: 0.6.5rem;
+    --send: 0.6rem;
+  }
+
   body {
     font-size: 15px !important;
   }
@@ -1107,8 +1215,7 @@ input[type=number] {
     color: transparent;
   }
   61%{
-    color: var(--orange);
-    
+    color: var(--orange); 
   }
   65%{
     text-shadow: rgba(216, 107, 34, 0.8) 0 0 8px;
